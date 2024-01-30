@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ft・m換算システム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #converter {
+            display: flex;
+            justify-content: space-around;
+            max-width: 80%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .conversion-panel {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #result-feet, #result-meters {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #explanation {
+            max-width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="converter">
+        <div class="conversion-panel">
+            <h2>m → ft</h2>
+            <label for="meters">m:</label>
+            <input type="number" id="meters" placeholder="mの値を入力" />
+            <button onclick="convertMetersToFeet()">変換</button>
+            <p id="result-feet"></p>
+        </div>
+
+        <div class="conversion-panel">
+            <h2>ft → m</h2>
+            <label for="feet">ft:</label>
+            <input type="number" id="feet" placeholder="ftの値を入力" />
+            <button onclick="convertFeetToMeters()">変換</button>
+            <p id="result-meters"></p>
+        </div>
+    </div>
+
+    <div id="explanation">
+        <h2>フィート (ft) について</h2>
+        <p>
+            フィート (Feet) は、長さや距離を測るための非公式な単位で、主に英語圏で使用されます。
+            <br>1 フィートは約 0.3048 メートルに相当します。
+            <br>この換算システムを使用して、メートルとフィートの間で長さを変換することができます。
+        </p>
+
+        <h2>メートルとフィートの換算</h2>
+        <p>
+            1 メートルは約 3.28084 フィートです。従って、メートルからフィートに変換する際は、
+            <br>メートルの値に 3.28084 を掛けます。逆に、フィートからメートルに変換する際は、
+            <br>フィートの値に 0.3048 を掛けます。
+        </p>
+    </div>
+
+    <script>
+        function convertMetersToFeet() {
+            var meters = document.getElementById('meters').value;
+            var resultFeet = document.getElementById('result-feet');
+
+            // メートルからフィートに変換（1メートル ≈ 3.28084 フィート）
+            var feet = meters * 3.28084;
+
+            resultFeet.textContent = meters + ' mは約 ' + feet.toFixed(2) + ' ftです。';
+        }
+
+        function convertFeetToMeters() {
+            var feet = document.getElementById('feet').value;
+            var resultMeters = document.getElementById('result-meters');
+
+            // フィートからメートルに変換（1フィート ≈ 0.3048 メートル）
+            var meters = feet * 0.3048;
+
+            resultMeters.textContent = feet + ' ftは約 ' + meters.toFixed(2) + ' mです。';
+        }
+    </script>
+
+</body>
+</html>
